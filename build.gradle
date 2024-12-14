@@ -2,6 +2,8 @@ plugins {
 	id 'java'
 }
 
+group 'com.stringLab'  // 프로젝트의 Group ID
+version '1.0.0'        // 프로젝트 버전
 
 java {
 	toolchain {
@@ -15,6 +17,7 @@ repositories {
 
 dependencies {
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+ 	testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0' 
 }
 
 tasks.named('test') {

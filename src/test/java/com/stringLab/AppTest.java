@@ -1,12 +1,12 @@
 package com.stringLab;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.Assertions;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class AppTest {
 	@Test
     public void testMain() {
-        assertEquals("Hello, StringLab!", "Hello, StringLab!");
+		Assertions.assertEquals("Hello, StringLab!", "Hello, StringLab!");
     }
 }
