@@ -105,4 +105,26 @@ public class StringServiceTest {
         Assertions.assertNotNull(guid);                                   // null 여부 확인
         Assertions.assertEquals(36, guid.length());                       // GUID 표준 길이 확인
     }
+    
+    @Test
+    public void testMaskEmail() {
+        Assertions.assertEquals("ab***@example.com", service.maskEmail("abc@example.com"));
+        Assertions.assertEquals("*@example.com", service.maskEmail("a@example.com"));
+        Assertions.assertNull(service.maskEmail(null));
+        Assertions.assertEquals("invalid-email", service.maskEmail("invalid-email"));
+    }
+
+    @Test
+    public void testMaskPhoneNumber() {
+    	Assertions.assertEquals("*******5678", service.maskPhoneNumber("01012345678")); // 정상적인 전화번호
+        Assertions.assertNull(service.maskPhoneNumber(null));                         // null 입력
+        Assertions.assertEquals("", service.maskPhoneNumber(""));                     // 빈 문자열 입력
+    }
+
+    @Test
+    public void testMaskCardNumber() {
+        Assertions.assertEquals("****-****-****-1234", service.maskCardNumber("1234567812341234"));
+        Assertions.assertEquals("1234", service.maskCardNumber("1234"));
+        Assertions.assertNull(service.maskCardNumber(null));
+    }
 }

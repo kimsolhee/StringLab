@@ -4,6 +4,8 @@ import com.stringLab.core.formatter.DefaultStringFormatter;
 import com.stringLab.core.formatter.StringFormatter;
 import com.stringLab.core.generator.DefaultStringGenerator;
 import com.stringLab.core.generator.StringGenerator;
+import com.stringLab.core.masker.DefaultStringMasker;
+import com.stringLab.core.masker.StringMasker;
 import com.stringLab.core.transformer.DefaultStringTransformer;
 import com.stringLab.core.transformer.StringTransformer;
 import com.stringLab.core.validator.DefaultStringValidator;
@@ -18,6 +20,7 @@ public class StringService {
     private final StringValidator validator;
     private final StringFormatter formatter;
     private final StringGenerator generator;
+    private final StringMasker masker;
 
     /**
      * 기본 구현 클래스를 사용하여 서비스 초기화.
@@ -27,6 +30,7 @@ public class StringService {
          this.validator = new DefaultStringValidator();      // 문자열 검증
          this.formatter = new DefaultStringFormatter();      // 문자열 포맷팅
          this.generator = new DefaultStringGenerator();      // 문자열 생성
+         this.masker = new DefaultStringMasker();			// 마스킹 처리
     }
     
     // ===== 변환 기능 =====
@@ -152,5 +156,37 @@ public class StringService {
      */
     public String generateGUID() {
         return generator.generateGUID();
+    }
+    
+    // ===== 마스킹 기능 =====
+
+    /**
+     * 이메일 주소를 마스킹합니다.
+     *
+     * @param email 마스킹할 이메일 주소
+     * @return 마스킹된 이메일 주소
+     */
+    public String maskEmail(String email) {
+        return masker.maskEmail(email);
+    }
+
+    /**
+     * 전화번호를 마스킹합니다.
+     *
+     * @param phone 마스킹할 전화번호
+     * @return 마스킹된 전화번호
+     */
+    public String maskPhoneNumber(String phone) {
+        return masker.maskPhoneNumber(phone);
+    }
+
+    /**
+     * 카드 번호를 마스킹합니다.
+     *
+     * @param card 마스킹할 카드 번호
+     * @return 마스킹된 카드 번호
+     */
+    public String maskCardNumber(String card) {
+        return masker.maskCardNumber(card);
     }
 }	
