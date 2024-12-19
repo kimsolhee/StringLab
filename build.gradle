@@ -13,11 +13,14 @@ java {
 
 repositories {
 	mavenCentral()
+	maven { url 'https://jitpack.io' } 
 }
 
 dependencies {
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
  	testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0' 
+ 	
+ 	implementation 'com.github.kimsolhee:StringLab:v1.0.0' // JitPack 의존성 추가
 }
 
 tasks.named('test') {
